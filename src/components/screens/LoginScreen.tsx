@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -11,30 +11,53 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RootStackScreenProps } from "../../types/navigation";
 import { CustomText } from "../atoms";
 import { colors } from "../../constants";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loginUser, clearError } from "../../store/slices/authSlice";
 
 type Props = RootStackScreenProps<"Login">;
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useAppDispatch();
+  const { isLoading, error, isAuthenticated } = useAppSelector(
+    (state) => state.auth
+  );
 
-  const handleLogin = () => {
+  const [email, setEmail] = useState("frontend@kamion.co"); // Test credentials pre-filled
+  const [password, setPassword] = useState("Frontend.2024");
+
+  // Navigate to LoadList when authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigation.replace("LoadList");
+    }
+  }, [isAuthenticated, navigation]);
+
+  // Show error alert when there's an error
+  useEffect(() => {
+    if (error) {
+      Alert.alert("Hata", error, [
+        {
+          text: "Tamam",
+          onPress: () => dispatch(clearError()),
+        },
+      ]);
+    }
+  }, [error, dispatch]);
+
+  const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert("Hata", "Lütfen tüm alanları doldurun");
       return;
     }
 
-    // Simple validation - in real app, API call would be made
-    if (email === "test@test.com" && password === "123456") {
-      navigation.replace("LoadList");
-    } else {
-      Alert.alert("Hata", "Geçersiz email veya şifre");
-    }
+    // Dispatch login action
+    dispatch(loginUser({ email, password }));
   };
 
   return (
@@ -115,10 +138,18 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
               </View>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-              <CustomText variant="button" color={colors.white}>
-                Giriş Yapın
-              </CustomText>
+            <TouchableOpacity
+              style={[styles.button, isLoading && styles.buttonDisabled]}
+              onPress={handleLogin}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <ActivityIndicator color={colors.white} size="small" />
+              ) : (
+                <CustomText variant="button" color={colors.white}>
+                  Giriş Yapın
+                </CustomText>
+              )}
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -201,6 +232,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
+  },
+  buttonDisabled: {
+    opacity: 0.6,
   },
 });
 

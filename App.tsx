@@ -1,6 +1,8 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import { store } from "./src/store";
 import RootNavigator from "./src/navigation/RootNavigator";
 
 const App: React.FC = () => {
@@ -16,10 +18,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <RootNavigator />
       <StatusBar style="auto" />
-    </>
+    </Provider>
   );
 };
 
