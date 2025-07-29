@@ -1,7 +1,7 @@
 import { ApiResponse } from "./common";
 
-// User entity
-export interface User {
+// User entity for auth
+export interface AuthUser {
   id: number;
   name: string;
   surname: string;
@@ -23,7 +23,7 @@ export interface LoginCredentials {
 }
 
 // Login response data structure
-export interface LoginResponseData extends User {
+export interface LoginResponseData extends AuthUser {
   token: string;
 }
 
@@ -32,6 +32,6 @@ export interface LoginApiResponse extends ApiResponse<LoginResponseData> {}
 
 // Processed login response for Redux
 export interface LoginResponse {
-  user: User;
+  user: AuthUser;
   token: string;
 }

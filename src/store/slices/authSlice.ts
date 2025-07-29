@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { apiClient, setAuthToken } from "../../api/client";
 import {
-  User,
+  AuthUser,
   LoginCredentials,
   LoginApiResponse,
   LoginResponse,
@@ -9,7 +9,7 @@ import {
 
 // Auth state interface
 export interface AuthState {
-  user: User | null;
+  user: AuthUser | null;
   token: string | null;
   isLoading: boolean;
   error: string | null;
