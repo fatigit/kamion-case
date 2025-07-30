@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
 import { colors } from "../../constants";
 
 interface SearchBarProps {
