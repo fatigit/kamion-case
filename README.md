@@ -10,15 +10,7 @@ A React Native mobile application for shipment management.
 - **Shipment Details**: View route, driver info, pricing and status
 - **Logout**: Secure logout functionality
 
-## 🛠️ Technologies
-
-- **React Native** (0.79.5) + **TypeScript**
-- **Expo** (~53.0.20)
-- **Redux Toolkit** - State management
-- **React Navigation** - Navigation
-- **Axios** - API requests
-
-## 📱 Screenshots
+## Screenshots
 
 <div align="center">
   <img src="./assets/images/screenshots/1.png" width="200" alt="Splash Screen"/>
@@ -27,6 +19,14 @@ A React Native mobile application for shipment management.
   <img src="./assets/images/screenshots/4.png" width="200" alt="Search Function"/>
   <img src="./assets/images/screenshots/5.png" width="200" alt="Load Detail"/>
 </div>
+
+## 🛠️ Technologies
+
+- **React Native** (0.79.5) + **TypeScript**
+- **Expo** (~53.0.20)
+- **Redux Toolkit** - State management
+- **React Navigation** - Navigation
+- **Axios** - API requests
 
 ## 📱 Installation
 
