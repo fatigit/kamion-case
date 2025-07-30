@@ -93,10 +93,16 @@ const LoadListScreen: React.FC<Props> = ({ navigation }) => {
         from: from,
         to: to,
         date: shipment.pick_up_date
-          ? new Date(shipment.pick_up_date * 1000).toLocaleDateString("tr-TR")
+          ? new Date(shipment.pick_up_date * 1000).toLocaleDateString("tr-TR", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
           : "-",
         price: shipment.price?.shipper?.freight_price
-          ? `${shipment.price.shipper.freight_price}₺+KDV`
+          ? `${Math.floor(
+              parseFloat(shipment.price.shipper.freight_price)
+            )}₺+KDV`
           : "-",
         status: shipment.latest_status?.type_value || "-",
         weight:

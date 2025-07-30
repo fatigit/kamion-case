@@ -72,21 +72,12 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
               imageSource={require("../../../assets/images/kamionVector.png")}
             />
 
-            <CustomText
-              variant="title"
-              color={colors.textPrimary}
-              align="center"
-              style={styles.title}
-            >
-              Kamion'a Hoşgeldiniz
-            </CustomText>
+            <View style={styles.titleContainer}>
+              <CustomText style={styles.titleKamion}>Kamion'a </CustomText>
+              <CustomText style={styles.titleWelcome}>Hoşgeldiniz</CustomText>
+            </View>
 
-            <CustomText
-              variant="body"
-              color={colors.textSecondary}
-              align="center"
-              style={styles.subtitle}
-            >
+            <CustomText style={styles.subtitle}>
               Lütfen email ve şifrenizi girerek giriş yapınız.
             </CustomText>
 
@@ -135,11 +126,42 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+  titleContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "baseline",
+    marginBottom: 8,
+  },
+  titleKamion: {
+    fontFamily: "Axiforma",
+    fontWeight: "500",
+    fontSize: 24,
+    lineHeight: 32,
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#0A2468",
+  },
+  titleWelcome: {
+    fontFamily: "Axiforma-Light",
+    fontWeight: "300",
+    fontSize: 24,
+    lineHeight: 32,
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#0A2468",
+  },
   title: {
     marginBottom: 12,
     fontWeight: "bold",
   },
   subtitle: {
+    fontFamily: "Axiforma",
+    fontWeight: "400",
+    fontSize: 14,
+    lineHeight: 26,
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#93979B",
     marginBottom: 40,
     paddingHorizontal: 20,
   },

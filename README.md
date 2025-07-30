@@ -18,6 +18,16 @@ A React Native mobile application for shipment management.
 - **React Navigation** - Navigation
 - **Axios** - API requests
 
+## 📱 Screenshots
+
+<div align="center">
+  <img src="./assets/images/screenshots/1.png" width="200" alt="Splash Screen"/>
+  <img src="./assets/images/screenshots/2.png" width="200" alt="Login Screen"/>
+  <img src="./assets/images/screenshots/3.png" width="200" alt="Load List"/>
+  <img src="./assets/images/screenshots/4.png" width="200" alt="Search Function"/>
+  <img src="./assets/images/screenshots/5.png" width="200" alt="Load Detail"/>
+</div>
+
 ## 📱 Installation
 
 ```bash
