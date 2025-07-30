@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Alert,
 } from "react-native";
+
 import { RootStackScreenProps } from "../../types/navigation";
 import { Header, DetailRow, InfoBadge } from "../molecules";
 import { RouteSection, DriverSection } from "../organisms";

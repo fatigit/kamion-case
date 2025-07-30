@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { View, StyleSheet, Image } from "react-native";
+
 import { RootStackScreenProps } from "../../types/navigation";
 import { colors } from "../../constants";
 

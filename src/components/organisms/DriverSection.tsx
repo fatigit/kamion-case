@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
+
 import { InfoBadge } from "../molecules";
 import { CustomText } from "../atoms";
 import { colors } from "../../constants";

@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   ViewStyle,
 } from "react-native";
+
 import CustomText from "./CustomText";
 import { colors } from "../../constants";
 

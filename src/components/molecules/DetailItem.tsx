@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+
 import { CustomText } from "../atoms";
 import { colors } from "../../constants";
 
