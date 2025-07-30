@@ -18,6 +18,7 @@ import {
   setSearchTerm,
   clearError,
 } from "../../store/slices/shipmentSlice";
+import { logout } from "../../store/slices/authSlice";
 import { Shipment } from "../../types/api/shipment";
 
 type Props = RootStackScreenProps<"LoadList">;
@@ -35,12 +36,6 @@ const LoadListScreen: React.FC<Props> = ({ navigation }) => {
   useEffect(() => {
     dispatch(fetchShipments({}));
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log("Shipments data:", shipments);
-    console.log("Is loading:", isLoading);
-    console.log("Error:", error);
-  }, [shipments, isLoading, error]);
 
   useEffect(() => {
     if (error) {
@@ -174,9 +169,36 @@ const LoadListScreen: React.FC<Props> = ({ navigation }) => {
     navigation.goBack();
   };
 
+  const handleLogout = () => {
+    Alert.alert("Çıkış Yap", "Çıkış yapmak istediğinizden emin misiniz?", [
+      {
+        text: "İptal",
+        style: "cancel",
+      },
+      {
+        text: "Çıkış Yap",
+        style: "destructive",
+        onPress: () => {
+          dispatch(logout());
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "Login" }],
+          });
+        },
+      },
+    ]);
+  };
+
   return (
     <View style={styles.container}>
-      <Header title="Yükler" onBackPress={handleBackPress} />
+      <Header
+        title="Yükler"
+        onBackPress={handleBackPress}
+        rightButton={{
+          icon: "log-out-outline",
+          onPress: handleLogout,
+        }}
+      />
 
       <SearchBar
         value={searchTerm}

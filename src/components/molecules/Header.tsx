@@ -14,12 +14,18 @@ interface HeaderProps {
   title: string;
   showBackButton?: boolean;
   onBackPress?: () => void;
+  rightButton?: {
+    icon: string;
+    onPress: () => void;
+    color?: string;
+  };
 }
 
 const Header: React.FC<HeaderProps> = ({
   title,
   showBackButton = false,
   onBackPress,
+  rightButton,
 }) => {
   return (
     <SafeAreaView style={styles.container}>
@@ -52,7 +58,21 @@ const Header: React.FC<HeaderProps> = ({
           </CustomText>
         </View>
 
-        <View style={styles.rightSection} />
+        <View style={styles.rightSection}>
+          {rightButton && (
+            <TouchableOpacity
+              style={styles.rightButton}
+              onPress={rightButton.onPress}
+              activeOpacity={0.7}
+            >
+              <Ionicons
+                name={rightButton.icon as any}
+                size={24}
+                color={rightButton.color || colors.textPrimary}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -79,8 +99,12 @@ const styles = StyleSheet.create({
   },
   rightSection: {
     width: 60,
+    alignItems: "flex-end",
   },
   backButton: {
+    padding: 4,
+  },
+  rightButton: {
     padding: 4,
   },
   title: {
